@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  Helvetica, sans-serif;
+}
+
+:root {
+  --mqvym54: #fff;
 }
 
 @layer base {
@@ -33,6 +37,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --category-bg: #fff;
+    --category-hover: #c2ffe2;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -59,6 +65,8 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --category-bg: #0000;
+    --category-hover: #1a1a1a;
   }
 }
 
@@ -69,4 +77,13 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.categoryCard:hover {
+  background: radial-gradient(
+    63.44% 63.44% at 50% 50%,
+    var(--category-hover) 0%,
+    var(--category-bg) 100%
+  );
+  /* var(--mqvym54); */
 }
