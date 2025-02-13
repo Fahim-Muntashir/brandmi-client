@@ -13,7 +13,7 @@ const Logo = () => {
 
   return (
     <Link href="/" className="flex items-center" aria-label="Home">
-      <Image src={isLogo} width={150} height={200} alt="logo" />
+      <Image src={isLogo} width={140} height={200} alt="logo" />
     </Link>
   );
 };

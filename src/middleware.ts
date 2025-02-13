@@ -17,9 +17,9 @@ export function middleware(request: NextRequest) {
         return null
     }
     // If you try to access other routes instead of public routes without logging in, send to the login route:
-    if (!isPublicRoutes && !isAuth) {
-        return NextResponse.redirect(new URL('/login', request.url))
-    }
+    // if (!isPublicRoutes && !isAuth) {
+    //     return NextResponse.redirect(new URL('/login', request.url))
+    // }
 
 
     return null
