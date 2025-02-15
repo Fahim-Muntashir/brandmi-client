@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+module.exports = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
 
-export default nextConfig;
+            },
+        ],
+    },
+}
