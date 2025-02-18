@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const SellerDemoData = [
     {
         _id: "23333333",
@@ -21,16 +22,23 @@ export const SellerDemoData = [
     }
 ]
 
+=======
+>>>>>>> 8b40f1c0d2905c2f97b1787cda119e2b042bdb4a
 export const ProfileDemoData = [
     {
-        _id: "23333333",
+        _id: "343434343434",
         userId: "fahim",
         profileHeadline: "Honesty is the best programmer",
         bio: 'heloon@gmail.com I am pro frem er er oker  oker oker oker oker oker oker oker oker oker oker oker oker oker oker oker oker',
         country: "United States",
         memberSince: "5-jul-2024",
+<<<<<<< HEAD
         lastDelivery: "1 hour",
         responseTime: "2 hours"
 
+=======
+        ProfileHeadline: "Honesty is the best programmer",
+        Categories: ["Am bari", "Kathal Pari"]
+>>>>>>> 8b40f1c0d2905c2f97b1787cda119e2b042bdb4a
     }
 ]
