@@ -10,6 +10,7 @@ import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/schemas/login.schema";
 import LoginWithGoogle from "@/components/auth/googleAuth/LoginWithGoogle";
+import { loginDefaultValues } from "@/defaultValues/loginDefaultValues";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -37,10 +38,7 @@ const LoginForm: React.FC = () => {
         <UseForm
           onSubmit={handleSubmit}
           schema={loginSchema}
-          defaultValues={{
-            email: "afba009@gmail.com",
-            password: "Pass12345!",
-          }}
+          defaultValues={loginDefaultValues}
         >
           <UseInput
             name="email"

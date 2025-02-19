@@ -47,7 +47,7 @@ const GigImageGallery = () => {
               <input
                 id="image-upload"
                 type="file"
-                accept="image/*"
+                // accept="image/*"
                 className="hidden"
                 onChange={(e) => handleImageUpload(e.target.files?.[0] || null)}
               />

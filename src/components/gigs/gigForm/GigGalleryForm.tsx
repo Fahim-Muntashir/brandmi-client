@@ -20,6 +20,10 @@ const GigGalleryForm = () => {
       ...updatedFormData.gallery,
     };
     console.log(gigFormData);
+    // make a form
+    // api call
+    // success
+    // error
   };
 
   return (
