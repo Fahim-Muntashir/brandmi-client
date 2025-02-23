@@ -47,22 +47,22 @@ const GigImageGallery = () => {
               <input
                 id="image-upload"
                 type="file"
-                accept="image/*"
+                // accept="image/*"
                 className="hidden"
                 onChange={(e) => handleImageUpload(e.target.files?.[0] || null)}
               />
             </div>
-            <div className="mt-4 space-y-2 flex flex-wrap gap-8 justify-center ">
+            <div className="mt-4 grid grid-cols-3">
               {images.map((img: File, index: number) => (
                 <Card
                   key={index}
-                  className="relative group overflow-hidden rounded-lg w-full md:w-[200px]"
+                  className="relative group overflow-hidden rounded-lg gap-8"
                 >
                   <Image
                     src={URL.createObjectURL(img)}
                     alt={`Gallery ${index + 1}`}
-                    width={500}
-                    height={500}
+                    width={1000}
+                    height={1000}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
