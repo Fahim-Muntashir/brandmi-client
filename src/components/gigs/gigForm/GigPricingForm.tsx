@@ -4,7 +4,7 @@ import GigButtons from "../gigButtons";
 import { gigFormState } from "@/globalStore/gigFormState";
 import { gigPricingSchema } from "@/schemas/gig.schema";
 import PackageFormCard from "./PackageFormCard";
-import { gigPricingNamePrefix } from "@/types/formTypes/form.types";
+import { gigPricingNamePrefix } from "@/types/formTypes/formName";
 
 const GigPricingForm = () => {
   const { currentTab, setCurrentTab, formData, updateFormData } =
