@@ -11,6 +11,11 @@ module.exports = {
                 hostname: 'lh3.googleusercontent.com',
 
             },
+            {
+                protocol: 'https',
+                hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
+
+            },
         ],
     },
 }
