@@ -52,7 +52,7 @@ const GigImageGallery = () => {
                 onChange={(e) => handleImageUpload(e.target.files?.[0] || null)}
               />
             </div>
-            <div className="mt-4 grid grid-cols-3">
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
               {images.map((img: File, index: number) => (
                 <Card
                   key={index}

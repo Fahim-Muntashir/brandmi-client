@@ -5,7 +5,7 @@ import Image from "next/image";
 import buyerPhoto from "@/assests/buyeravif.avif";
 const BuyerProfile = () => {
   return (
-    <div className="w-1/3">
+    <main className="space-y-4">
       <Card className="p-6 space-y-6">
         {/* profile pic */}
         <div className="text-center space-y-4">
@@ -21,7 +21,7 @@ const BuyerProfile = () => {
                 <Star className="w-4 h-4 fill-current" />
               </div>
             </div>
-            <div>{/* Additional content or text can go here */}</div>
+            <div>{/* Additional content or text can go here */} </div>
           </div>
           <div>
             <h2 className="font-semibold text-xl">Productguy</h2>
@@ -82,7 +82,14 @@ const BuyerProfile = () => {
           </div>
         </div>
       </Card>
-    </div>
+      <Card className="p-6 ">
+        <h2 className="font-medium mb-2">Description</h2>
+        <p>
+          Experienced marketing professional with a passion for digital strategy
+          and branding.
+        </p>
+      </Card>
+    </main>
   );
 };
 export default BuyerProfile;

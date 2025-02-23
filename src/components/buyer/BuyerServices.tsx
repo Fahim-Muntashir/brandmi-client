@@ -1,26 +1,28 @@
 import Image from "next/image";
 import { Card, CardContent } from "../ui/card";
 
+const demoServiceData = [
+  {
+    title: "I will create a professional logo for your website",
+    price: 150,
+    image: "/placeholder.svg",
+  },
+  {
+    title: "I will design your next project logo only on Fiverr",
+    price: 850,
+    image: "/placeholder.svg",
+  },
+  {
+    title: "I will design a cool and elegant logo",
+    price: 700,
+    image: "/placeholder.svg",
+  },
+];
+
 const BuyerServices = () => {
   return (
-    <div className="grid md:grid-cols-3 gap-4">
-      {[
-        {
-          title: "I will create a professional logo for your website",
-          price: 150,
-          image: "/placeholder.svg",
-        },
-        {
-          title: "I will design your next project logo only on Fiverr",
-          price: 850,
-          image: "/placeholder.svg",
-        },
-        {
-          title: "I will design a cool and elegant logo",
-          price: 700,
-          image: "/placeholder.svg",
-        },
-      ].map((service, i) => (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {demoServiceData.map((service, i) => (
         <Card key={i} className="overflow-hidden">
           <Image
             src={service.image || "/placeholder.svg"}

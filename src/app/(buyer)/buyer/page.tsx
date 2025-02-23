@@ -1,17 +1,20 @@
 import BuyerProfile from "@/components/buyer/BuyerProfile";
+import BuyerReviews from "@/components/buyer/BuyerReviews";
 import BuyerServices from "@/components/buyer/BuyerServices";
 
 const page = () => {
   return (
-    <div>
-      <section className="container flex gap-4 px-4 mx-auto mt-4  ">
-        <BuyerProfile />
-        {/* part 2 */}
-        <div className="w-2/3">
+    <main>
+      <section className="container md:flex gap-4 px-4 mx-auto py-4 ">
+        <div className="w-full lg:w-1/3">
+          <BuyerProfile />
+        </div>
+        <div className="w-full lg:w-2/3 space-y-5">
           <BuyerServices />
+          <BuyerReviews />
         </div>
       </section>
-    </div>
+    </main>
   );
 };
 export default page;
