@@ -1,20 +1,13 @@
-import BuyerProfile from "@/components/buyer/BuyerProfile";
-import BuyerReviews from "@/components/buyer/BuyerReviews";
-import BuyerServices from "@/components/buyer/BuyerServices";
+import BuyerContent from "@/components/buyer/BuyerContent";
+import BuyerSidebar from "@/components/buyer/BuyerSidebar";
 
-const page = () => {
+const BuyerPage = () => {
   return (
-    <main>
-      <section className="container md:flex gap-4 px-4 mx-auto py-4 ">
-        <div className="w-full lg:w-1/3">
-          <BuyerProfile />
-        </div>
-        <div className="w-full lg:w-2/3 space-y-5">
-          <BuyerServices />
-          <BuyerReviews />
-        </div>
-      </section>
+    <main className="flex flex-1 h-screen bg-gray-100">
+      {/* sidebar */}
+      <BuyerSidebar />
+      <BuyerContent />
     </main>
   );
 };
-export default page;
+export default BuyerPage;
