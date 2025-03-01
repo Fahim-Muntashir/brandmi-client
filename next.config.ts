@@ -16,6 +16,11 @@ module.exports = {
                 hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com',
 
             },
+            {
+                protocol: 'https',
+                hostname: 'fiverr-res.cloudinary.com',
+
+            },
         ],
     },
 }
