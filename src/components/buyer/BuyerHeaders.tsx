@@ -15,9 +15,9 @@ const BuyerHeaders = () => {
     <header className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          {/* <Button variant="ghost" size="icon" className="md:hidden">
+          <Button variant="ghost" size="icon" className="md:hidden">
             <ChevronDown className="h-4 w-4" />
-          </Button> */}
+          </Button>
           <nav>
             <ul className="flex items-center gap-6">
               <li>

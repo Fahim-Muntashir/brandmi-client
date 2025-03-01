@@ -5,8 +5,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 
 const BuyerSidebar = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const [sidebarOpen, setSideBarOpen] = useState(false);
   return (
     <section
       className={`bg-white w-80 min-h-screen flex flex-col transition-all duration-300 ease-in-out ${
