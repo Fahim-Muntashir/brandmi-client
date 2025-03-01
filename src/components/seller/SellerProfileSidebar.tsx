@@ -3,6 +3,19 @@ import { Star, Clock, MapPin, Calendar } from "lucide-react"
 import Image from 'next/image';
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+
+import {
+
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 const SellerProfileSidebar = () => {
     return (
         <div className="space-y-6">
@@ -15,7 +28,7 @@ const SellerProfileSidebar = () => {
                         height={150}
                         className="rounded-full"
                     />
-                    <Badge className="absolute -bottom-2 right-0 bg-purple-600">LEVEL TWO</Badge>
+                    <Badge className="absolute -bottom-2 right-0 bg-purple-600">L  EVEL TWO</Badge>
                 </div>
                 <h1 className="mt-4 text-2xl font-bold">M. Abuzar Asif</h1>
                 <p className="text-muted-foreground">@abuxarstudios</p>
@@ -28,12 +41,49 @@ const SellerProfileSidebar = () => {
             </div>
 
             <div className="flex gap-4">
-                <Button className="flex-1 bg-emerald-500 hover:bg-emerald-600">Contact Me</Button>
+                <Button className="flex-1 bg-primary hover:bg-emerald-600">Contact Me</Button>
                 <Button variant="outline" className="flex-1">
                     Get a Quote
                 </Button>
             </div>
-
+            <div>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button className="flex-1 bg-slate-200 w-full  font-bold" variant="outline">Edit Profile</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                            <DialogTitle>Edit profile</DialogTitle>
+                            <DialogDescription>
+                                Make changes to your profile here. Click save when you re done.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="name" className="text-right">
+                                    Name
+                                </Label>
+                                <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="username" className="text-right">
+                                    Username
+                                </Label>
+                                <Input id="username" value="@peduarte" className="col-span-3" />
+                            </div><div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="username" className="text-right">
+                                    Description
+                                </Label>
+                                <Input id="username"
+                                    className="col-span-3" />
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit">Save changes</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
+            </div>
             <div className="space-y-4 rounded-lg border p-4">
                 <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-muted-foreground" />
@@ -78,7 +128,7 @@ const SellerProfileSidebar = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
 
     );
 };
