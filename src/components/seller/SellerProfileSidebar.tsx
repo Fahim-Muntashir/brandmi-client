@@ -3,6 +3,8 @@ import { Star, Clock, MapPin, Calendar } from "lucide-react"
 import Image from 'next/image';
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import {
 
@@ -15,14 +17,13 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 const SellerProfileSidebar = () => {
     return (
         <div className="space-y-6">
             <div className="flex flex-col items-center text-center">
                 <div className="relative">
                     <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/33323-1-1679726889%20(1)-OSkqcPh3Tyusf6lqsUWlxx46t7nmwT.png"
+                        src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/b50707693a12bb102034ac34be864c16-1740066506883/74ec8681-1189-4e04-9cf1-f4d8ced6b0de.jpg"
                         alt="Profile picture"
                         width={150}
                         height={150}
@@ -51,7 +52,7 @@ const SellerProfileSidebar = () => {
                     <DialogTrigger asChild>
                         <Button className="flex-1 bg-slate-200 w-full  font-bold" variant="outline">Edit Profile</Button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
+                    <DialogContent className="sm:max-w-[565px]">
                         <DialogHeader>
                             <DialogTitle>Edit profile</DialogTitle>
                             <DialogDescription>
@@ -70,14 +71,52 @@ const SellerProfileSidebar = () => {
                                     Username
                                 </Label>
                                 <Input id="username" value="@peduarte" className="col-span-3" />
-                            </div><div className="grid grid-cols-4 items-center gap-4">
+                            </div>
+
+                            <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="username" className="text-right">
                                     Description
                                 </Label>
                                 <Input id="username"
                                     className="col-span-3" />
                             </div>
+
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="username" className="text-right">
+                                    Profile Headline
+                                </Label>
+                                <Input id="username"
+                                    className="col-span-3" />
+                            </div>
+
+                            {/* country  */}
+
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="country" className="text-right">
+                                    Country
+                                </Label>
+                                <div className="col-span-3">
+                                    <Select>
+                                        <SelectTrigger id="country">
+                                            <SelectValue placeholder="Select a country" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="af">Afghanistan</SelectItem>
+                                            <SelectItem value="gy">Guyana</SelectItem>
+                                            <SelectItem value="ht">Haiti</SelectItem>
+                                            <SelectItem value="hn">Honduras</SelectItem>
+
+
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+
+
+
                         </div>
+
+
                         <DialogFooter>
                             <Button type="submit">Save changes</Button>
                         </DialogFooter>

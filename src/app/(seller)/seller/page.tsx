@@ -14,7 +14,11 @@ export default function ProfilePage() {
                     <SellerProfileSidebar></SellerProfileSidebar>
                     {/* Gigs Grid */}
                     <div className="space-y-6">
-                        <h2 className="text-2xl font-bold">abuxarstudios s Gigs</h2>
+                        <div className="flex justify-between">
+                            <h2 className="text-2xl font-bold">abuxarstudios s Gigs</h2>
+                            <Button className="bg-primary hover:bg-emerald-600">ADD GIG</Button>
+
+                        </div>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             {[
                                 {
