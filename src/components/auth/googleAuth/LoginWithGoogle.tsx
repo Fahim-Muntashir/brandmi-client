@@ -44,7 +44,7 @@ const LoginWithGoogle = () => {
     }, 500);
   };
 
-  return <Button onClick={handleGoogleLogin}>Google</Button>;
+  return <Button className="w-full border shadow-none bg-white text-black" onClick={handleGoogleLogin}>Google</Button>;
 };
 
 export default LoginWithGoogle;
