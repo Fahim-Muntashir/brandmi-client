@@ -56,11 +56,9 @@ const LoginForm: React.FC = () => {
               Login
             </Button><div className="flex justify-between items-center">
               <div className="border-t w-2/5">
-
               </div>
               <p>or</p>
               <div className="border-t w-2/5">
-
               </div>
             </div>
           </UseForm>
