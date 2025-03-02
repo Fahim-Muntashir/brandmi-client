@@ -76,12 +76,12 @@ const RegisterForm = () => {
 
       <div className="flex border gap-3">
         <div className="md:w-2/4 hidden md:block">
-          <Image src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={650} height={100} />
+          <Image src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={630} height={100} />
         </div>
 
 
         <div className=" bg-white w-full max-w-md mx-auto p-10">
-          <h2 className="text-2xl font-bold mb-2 text-center mt-10">
+          <h2 className="text-2xl font-bold mb-2 text-center mt-5">
             Create Your Account
           </h2>
           <RoleSelector selectedRole={selectedRole} onRoleSelect={onRoleSelect} />
