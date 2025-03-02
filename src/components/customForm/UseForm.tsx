@@ -36,7 +36,7 @@ export function UseForm<T extends ZodType>({
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
         {children}
       </form>
     </Form>

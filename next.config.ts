@@ -21,6 +21,11 @@ module.exports = {
                 hostname: 'fiverr-res.cloudinary.com',
 
             },
+            {
+                protocol: 'https',
+                hostname: 'images.pexels.com',
+
+            },
         ],
     },
 }

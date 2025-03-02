@@ -8,9 +8,8 @@ const BuyerSidebar = () => {
   const [sidebarOpen, setSideBarOpen] = useState(false);
   return (
     <section
-      className={`bg-white w-80 min-h-screen flex flex-col transition-all duration-300 ease-in-out ${
-        sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 md:static absolute z-30`}
+      className={`bg-white w-80 min-h-screen flex flex-col transition-all duration-300 ease-in-out ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:static absolute z-30`}
     >
       <div className="flex flex-col items-center p-6 border-b">
         <div className="relative">
@@ -28,9 +27,8 @@ const BuyerSidebar = () => {
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
-              className={`h-4 w-4 ${
-                i < 4 ? "text-yellow-400 fill-current" : "text-gray-300"
-              }`}
+              className={`h-4 w-4 ${i < 4 ? "text-yellow-400 fill-current" : "text-gray-300"
+                }`}
             />
           ))}
           <span className="ml-2 text-sm text-gray-600">4.8 (68 reviews)</span>
