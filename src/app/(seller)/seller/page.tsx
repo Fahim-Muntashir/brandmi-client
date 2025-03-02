@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SellerProfileSidebar from "@/components/seller/SellerProfileSidebar"
+import Link from "next/link"
 
 export default function ProfilePage() {
     return (
@@ -16,7 +17,7 @@ export default function ProfilePage() {
                     <div className="space-y-6">
                         <div className="flex justify-between">
                             <h2 className="text-2xl font-bold">abuxarstudios s Gigs</h2>
-                            <Button className="bg-primary hover:bg-emerald-600">ADD GIG</Button>
+                            <Link href={"/seller/publishgig"} className="bg-primary hover:bg-emerald-600">ADD GIG</Link>
 
                         </div>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

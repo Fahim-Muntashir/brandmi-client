@@ -5,9 +5,9 @@ import GigPackages from "@/components/gigs/GigPackages";
 import ReviewCard from "@/components/gigs/GigReview";
 import SellerInfo from "@/components/gigs/SellerInfo";
 import SellerProfile from "@/components/gigs/SellerProfile";
-import { reviewData } from "@/demoData/reviewDemoData";
+import { reviewData } from "@/demoData/ReviewDemoData";
 import { SellerDemoData } from "@/demoData/SellerDemoData";
-import { gigSampleData } from "@/demoData/serviceDemoData";
+import { gigSampleData } from "@/demoData/ServiceDemoData";
 
 import { demoGig } from "@/lib/demoData";
 
