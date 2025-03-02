@@ -35,7 +35,7 @@ export default function ProfilePage() {
                                     reviews: 7,
                                     price: 15,
                                     image:
-                                        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/33323-1-1679726889%20(1)-OSkqcPh3Tyusf6lqsUWlxx46t7nmwT.png",
+                                        "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/417701964/original/4c35e43382c644f31aea1a5887e2cb71666be59f/be-your-custom-mern-stack-developer-as-a-full-stack-web-developer.jpg",
                                 },
                                 {
                                     title: "I will create a realistic 3d human model for you in 24 hours",
