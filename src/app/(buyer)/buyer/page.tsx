@@ -1,17 +1,13 @@
-import BuyerProfile from "@/components/buyer/BuyerProfile";
-import BuyerServices from "@/components/buyer/BuyerServices";
+import BuyerContent from "@/components/buyer/BuyerContent";
+import BuyerSidebar from "@/components/buyer/BuyerSidebar";
 
-const page = () => {
+const BuyerPage = () => {
   return (
-    <div>
-      <section className="container flex gap-4 px-4 mx-auto mt-4  ">
-        <BuyerProfile />
-        {/* part 2 */}
-        <div className="w-2/3">
-          <BuyerServices />
-        </div>
-      </section>
-    </div>
+    <main className="flex  h-screen bg-gray-100">
+      {/* sidebar */}
+      <BuyerSidebar />
+      <BuyerContent />
+    </main>
   );
 };
-export default page;
+export default BuyerPage;
