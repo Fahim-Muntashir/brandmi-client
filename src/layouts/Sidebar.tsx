@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   const { isAuth, user } = useAuth();
 
-  if (!isAuth) return router.push("/");
+  if (!isAuth) router.push("/");
   const { role } = user || {};
   let sidebarItems;
   switch (role) {
