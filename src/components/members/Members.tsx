@@ -21,7 +21,7 @@ export default function Members() {
     // Define responsive settings for different screen sizes
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 6,
+      items: 5,
       slidesToSlide: 1,
       showDots: false,
     },
@@ -34,7 +34,7 @@ export default function Members() {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 2,
-      slidesToSlide: 1,
+      slidesToSlide: 2,
       showDots: true,
     },
   };
@@ -55,8 +55,8 @@ export default function Members() {
             <Member
               {...member}
               key={index}
-              //   setHoverId={setHoverId}
-              //   hoverId={hoverId}
+            //   setHoverId={setHoverId}
+            //   hoverId={hoverId}
             />
           ))}
       </Carousel>

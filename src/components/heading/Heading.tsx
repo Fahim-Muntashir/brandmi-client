@@ -15,7 +15,7 @@ export default function Heading({
   className,
 }: HeadingProps) {
   const headingClasses = cn(
-    "font-bold leading-tight",
+    "leading-tight",
     {
       "text-2xl md:text-3xl lg:text-4xl": size === "sm",
       "text-3xl md:text-4xl lg:text-5xl": size === "md",

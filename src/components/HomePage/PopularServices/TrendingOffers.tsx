@@ -72,7 +72,7 @@ const offers: OfferType[] = [
 const PopularServices = () => {
   return (
     <section className="container mx-auto px-4 ">
-      <Heading heading="Trending Offers" />
+      <Heading heading="Trending Offers" className="mt-10" />
       <Heading subheading="Browse the trending offers that you currently need" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
