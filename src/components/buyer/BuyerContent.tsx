@@ -1,6 +1,5 @@
 import BuyerOverview from "./BuyerOverview";
 import ActiveOrders from "./ActiveOrders";
-import BuyerHeaders from "./BuyerHeaders";
 import OrderHistory from "./OrderHistory";
 import SavedGigs from "./SavedGigs";
 
@@ -8,7 +7,6 @@ const BuyerContent = () => {
   return (
     <section className="flex-1 flex flex-col overflow-hidden">
       {/* Header */}
-      <BuyerHeaders />
 
       {/* Dashboard Content */}
       <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">

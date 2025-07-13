@@ -13,11 +13,16 @@ export default function ProfilePage() {
                 <div className="grid gap-8 md:grid-cols-[300px_1fr]">
                     {/* Profile Sidebar */}
                     <SellerProfileSidebar></SellerProfileSidebar>
+                    
+                    
                     {/* Gigs Grid */}
                     <div className="space-y-6">
                         <div className="flex justify-between">
                             <h2 className="text-2xl font-bold">abuxarstudios s Gigs</h2>
-                            <Link href={"/seller/publishgig"} className="bg-primary hover:bg-emerald-600">ADD GIG</Link>
+                            <Link href={"/seller/publishgig"} className="bg-primary hover:bg-emerald-600">
+                                            <Button className="flex-1 bg-primary hover:bg-emerald-600">Add New Gig</Button>
+                            
+                            </Link>
 
                         </div>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

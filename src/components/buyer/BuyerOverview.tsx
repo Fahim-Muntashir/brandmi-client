@@ -21,8 +21,8 @@ const buyerOverviewData = [
 ];
 const BuyerOverview = () => {
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-4">
         {buyerOverviewData.map((data) => (
           <Card key={data.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
