@@ -60,7 +60,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --category-bg: #fff;
-    --category-hover: #c2ffe2;
+    --category-hover: #e5fcff;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -87,7 +87,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --category-bg: #0000;
+    --category-bg: #dad2d200;
     --category-hover: #1a1a1a;
   }
 }
