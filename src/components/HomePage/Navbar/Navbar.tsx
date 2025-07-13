@@ -6,14 +6,10 @@ import NavItems from "./NavItems";
 // import ToggleMode from "./ToogleMode";
 import UserMenu from "./UserMenu";
 
-export const navItems = [
-  { href: "/services", label: "Services" },
-  { href: "/talent", label: "Find Talents" },
-  { href: "/why", label: "Why Brandmi" },
-];
 
-export default function Navbar() {
 
+export default function Navbar({ navItems }) {
+  console.log(navItems);
   return (
     <main className="sticky top-0 z-50">
       <header className="w-full border-b bg-white dark:bg-black">
@@ -22,7 +18,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-6">
             <Logo />
             <div className="hidden md:block">
-              <NavItems />
+              <NavItems navItems={navItems} />
             </div>
           </div>
           {/* Right side: UserMenu and ToggleMode */}

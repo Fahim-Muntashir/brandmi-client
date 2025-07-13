@@ -8,7 +8,7 @@ import UseSelect from "@/components/customForm/UseSelect";
 import { gigOverviewSchema } from "@/schemas/gig.schema";
 import { z } from "zod";
 import { gigFormState } from "@/globalStore/gigFormState";
-import { gigOverviewName } from "@/types/formTypes/form.types";
+import { gigOverviewName } from "@/types/formTypes/formName";
 
 const options = [
   {

@@ -11,7 +11,7 @@ const PublishGig = () => {
   const { currentTab, getProgress, setCurrentTab } = gigFormState();
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate loading delay when tab changes
+  // loading delay when tab changes
   useEffect(() => {
     setIsLoading(true);
     const timer = setTimeout(() => {
@@ -42,6 +42,7 @@ const PublishGig = () => {
             return false;
           }}
         >
+          {/* form progress bar */}
           <GIgFormTabs currentTab={currentTab} onTabChange={setCurrentTab} />
 
           {/* Show loading spinner or content based on the loading state */}
