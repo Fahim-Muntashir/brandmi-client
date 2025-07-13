@@ -2,7 +2,7 @@
 import UseInput from "@/components/customForm/UseInput";
 import UseTextarea from "@/components/customForm/UseTextarea";
 import { Card } from "@/components/ui/card";
-import { gigPricingName } from "@/types/formTypes/form.types";
+import { gigPricingName } from "@/types/formTypes/formName";
 
 interface PackageCardProps {
   title: string;

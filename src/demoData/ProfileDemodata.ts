@@ -4,7 +4,8 @@ export const userData=[
       "name": "John Doe",
       "email": "johndoe@example.com",
       "role": "buyer",
-      "googleId": null,
+     "googleId": null,
+      "nickName": "John",
       "profilePhoto": "https://example.com/profiles/johndoe.jpg"
     },
     {
