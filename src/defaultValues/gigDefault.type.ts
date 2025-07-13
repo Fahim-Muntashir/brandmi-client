@@ -36,14 +36,14 @@ export const demoGigData = {
     description: {
         description: "I will create a modern, responsive website using React and Tailwind CSS. Your website will be fast, mobile-friendly, and SEO optimized.",
         faqs: [
-            {
-                question: "Do you provide source code?",
-                answer: "Yes, you'll receive full source code with documentation.",
-            },
-            {
-                question: "Can I request revisions?",
-                answer: "Yes, revisions are included based on your chosen package.",
-            },
+            // {
+            //     question: "Do you provide source code?",
+            //     answer: "Yes, you'll receive full source code with documentation.",
+            // },
+            // {
+            //     question: "Can I request revisions?",
+            //     answer: "Yes, revisions are included based on your chosen package.",
+            // },
         ],
         requirements: [
             "Detailed project requirements",

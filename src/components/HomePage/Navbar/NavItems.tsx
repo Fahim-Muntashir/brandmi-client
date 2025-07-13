@@ -1,13 +1,13 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { navItems } from "./Navbar";
 import Link from "next/link";
 
-const NavItems = () => {
+const NavItems = ({ navItems }) => {
+
   const pathname = usePathname();
   return (
     <div className="md:items-center md:flex-row flex  flex-col gap-4 ">
-      {navItems.map((item) => (
+      {navItems.map((item: any) => (
         <Link
           key={item.label}
           href={item.href}

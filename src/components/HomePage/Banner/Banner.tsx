@@ -20,7 +20,7 @@ export default function Banner() {
           </p>
           <Button className="my-8 bg-primary">Hire Expert</Button>
         </div>
-        <div className="flex items-center justify-center gap-4 ">
+        <div className="flex items-center justify-center gap-4 mt-2 ">
           <Image src={bannerimg} alt="" width={400} />
         </div>
       </div>

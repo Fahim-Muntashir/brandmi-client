@@ -1,64 +1,130 @@
-import UseInput from "@/components/customForm/UseInput";
-import UseTextarea from "@/components/customForm/UseTextarea";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { gigFormState } from "@/globalStore/gigFormState";
+import { FormField } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea"; // Assuming Textarea exists
 import { Plus, X } from "lucide-react";
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface FAQ {
   question: string;
   answer: string;
 }
 
-const FAQSection = () => {
-  const { formData } = gigFormState();
-  const faqs: FAQ[] = JSON.parse(JSON.stringify(formData.description.faqs)); // Deep copy to avoid reference issues.
-  const [questions, setQuestion] = useState<FAQ[]>([...faqs]);
-
-  const addFAQ = () => {
-    setQuestion((prev) => [...prev, { question: "", answer: "" }]);
-  };
-
-  const removeFaq = (index: number) => {
-    // Create a new array by filtering out the FAQ at the specified index.
-    const updatedFaqs = questions.filter((_, i) => i !== index);
-    setQuestion(updatedFaqs); // Update state with a fresh array reference.
-  };
+const FAQs = () => {
+  const { control } = useFormContext();
+  const [newFAQ, setNewFAQ] = useState<FAQ>({ question: "", answer: "" });
 
   return (
-    <div className="space-y-5">
-      <div className="flex justify-between items-center">
-        <Label>FAQs</Label>
-        <Button type="button" variant="outline" size="sm" onClick={addFAQ}>
-          <Plus className="h-4 w-4 mr-2" /> Add FAQ
-        </Button>
-      </div>
-      <div className="space-y-5">
-        {questions.map((item, index) => (
-          <div key={index} className="flex items-start gap-4">
-            <div className="flex-1 space-y-4">
-              <UseInput
-                name={`faqs.${index}.question`}
-                type="text"
-                label="Question"
-              />
-              <UseTextarea name={`faqs.${index}.answer`} label="Answer" />
+    <FormField
+      name="faqs"
+      control={control}
+      render={({ field }) => {
+        const values: FAQ[] = field.value || [];
+        const setValues = (newValues: FAQ[]) => field.onChange(newValues);
+
+        const addFAQ = () => {
+          if (
+            !newFAQ.question.trim() ||
+            !newFAQ.answer.trim() ||
+            values.some(
+              (faq) =>
+                faq.question.trim() === newFAQ.question.trim() &&
+                faq.answer.trim() === newFAQ.answer.trim()
+            )
+          ) {
+            return;
+          }
+          setValues([...values, newFAQ]);
+          setNewFAQ({ question: "", answer: "" });
+        };
+
+        const updateFAQ = (index: number, updatedFAQ: FAQ) => {
+          const updatedValues = [...values];
+          updatedValues[index] = updatedFAQ;
+          setValues(updatedValues);
+        };
+
+        const deleteFAQ = (index: number) => {
+          const updatedValues = values.filter((_, i) => i !== index);
+          setValues(updatedValues);
+        };
+
+        return (
+          <div className="space-y-5">
+            <div className="flex justify-between items-center">
+              <label className="text-sm font-semibold">FAQs</label>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={addFAQ}
+              >
+                <Plus className="h-4 w-4 mr-2" /> Add FAQ
+              </Button>
             </div>
-            <Button
-              onClick={() => removeFaq(index)}
-              size={"sm"}
-              type="button"
-              variant={"destructive"}
-              className="h-5 w-4"
-            >
-              <X />
-            </Button>
+
+            {/* New FAQ Input */}
+            <div className="flex flex-col gap-4 items-start mt-4">
+              <Input
+                placeholder="Enter a question"
+                value={newFAQ.question}
+                onChange={(e) =>
+                  setNewFAQ({ ...newFAQ, question: e.target.value })
+                }
+              />
+              <Textarea
+                placeholder="Enter an answer"
+                value={newFAQ.answer}
+                onChange={(e) =>
+                  setNewFAQ({ ...newFAQ, answer: e.target.value })
+                }
+              />
+            </div>
+
+            {/* List of FAQs */}
+            <div className="space-y-5 mt-5">
+              {values.map((faq, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="flex-1 space-y-3">
+                    <Input
+                      placeholder="Question"
+                      value={faq.question}
+                      onChange={(e) =>
+                        updateFAQ(index, {
+                          ...faq,
+                          question: e.target.value,
+                        })
+                      }
+                    />
+                    <Textarea
+                      placeholder="Answer"
+                      value={faq.answer}
+                      onChange={(e) =>
+                        updateFAQ(index, {
+                          ...faq,
+                          answer: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <Button
+                    size="sm"
+                    type="button"
+                    variant="destructive"
+                    className="h-5 w-4"
+                    onClick={() => deleteFAQ(index)}
+                  >
+                    <X />
+                  </Button>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
+        );
+      }}
+    />
   );
 };
 
-export default FAQSection;
+export default FAQs;
