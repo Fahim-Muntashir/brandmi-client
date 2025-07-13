@@ -3,6 +3,7 @@ import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
 import Navbar from "@/components/HomePage/Navbar/Navbar";
 import { Card } from "@/components/ui/card";
 import { cookies } from "next/headers";
+import { navItems } from "../(seller)/seller/layout";
 
 const Profile: React.FC = async () => {
   const cookieStore = await cookies();
@@ -26,7 +27,7 @@ const Profile: React.FC = async () => {
   }
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar navItems={navItems}></Navbar>
       <div className="bg-gray-100 min-h-screen p-6 font-sans">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {/* Profile Card */}

@@ -42,7 +42,7 @@ memberProps) {
         <div className="px-4 flex flex-col items-start gap-4">
           {/* Name, title, role */}
           <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-primary">{name}</h3>
+            <h3 className="text-sm font-semibold text-foreground">{name}</h3>
             <div className="flex items-start gap-2">
               <CheckCircle className="h-5 w-5 text-emerald-500" />
               <span className="text-xs text-emerald-400">
