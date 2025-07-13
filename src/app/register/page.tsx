@@ -16,6 +16,7 @@ import RoleSelector, {
   RoleSelectorProps,
   UserRole,
 } from "@/components/auth/RoleSelector";
+import Image from "next/image";
 
 // Zod Schema for Validation
 const registerSchema = z
@@ -69,52 +70,75 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-center">
-        Create Your Account
-      </h2>
-      <RoleSelector selectedRole={selectedRole} onRoleSelect={onRoleSelect} />
-      <UseForm
-        onSubmit={handleSubmit}
-        schema={registerSchema}
-        defaultValues={{
-          name: "Fahim",
-          email: "afba009@gmail.com",
-          password: "Pass12345!",
-          confirmPassword: "Pass12345!",
-        }}
-      >
-        <UseInput name="name" label="First Name" placeholder="John" />
-        <UseInput
-          name="email"
-          label="Email Address"
-          placeholder="john.doe@example.com"
-        />
-        <UseInput name="password" label="Password" placeholder="********" />
-        <UseInput
-          name="confirmPassword"
-          label="Confirm Password"
-          placeholder="********"
-        />
-        <Button
-          type="submit"
-          className="w-full"
-          disabled={!selectedRole || loading}
-        >
-          Register
-        </Button>
-      </UseForm>
-      <div className="flex justify-center pt-2">
-        <RegisterWithGoogle selectedRole={selectedRole} />
+
+    <div className="flex flex-1 justify-center items-center h-screen">
+
+
+      <div className="flex border gap-3">
+        <div className="md:w-2/4 hidden md:block">
+          <Image src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={650} height={100} />
+        </div>
+
+
+        <div className=" bg-white w-full max-w-md mx-auto p-10">
+          <h2 className="text-2xl font-bold mb-2 text-center mt-10">
+            Create Your Account
+          </h2>
+          <RoleSelector selectedRole={selectedRole} onRoleSelect={onRoleSelect} />
+          <UseForm
+            onSubmit={handleSubmit}
+            schema={registerSchema}
+            defaultValues={{
+              name: "Fahim",
+              email: "afba009@gmail.com",
+              password: "Pass12345!",
+              confirmPassword: "Pass12345!",
+            }}
+          >
+            <UseInput name="name" label="First Name" placeholder="John" />
+            <UseInput
+              name="email"
+              label="Email Address"
+              placeholder="john.doe@example.com"
+            />
+            <UseInput name="password" label="Password" placeholder="********" />
+            <UseInput
+              name="confirmPassword"
+              label="Confirm Password"
+              placeholder="********"
+            />
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={!selectedRole || loading}
+            >
+              Register
+            </Button>
+
+          </UseForm>             <br />
+          <div className="flex justify-between items-center">
+            <div className="border-t w-2/5">
+            </div>
+            <p>or</p>
+            <div className="border-t w-2/5">
+            </div>
+          </div>
+
+          <div className="flex justify-center pt-2">
+            <RegisterWithGoogle selectedRole={selectedRole} />
+          </div>
+          <div className="text-center mt-4">
+            <p className="text-sm text-gray-600">
+              Already have an account?{" "}
+              <Link href="/login" className="text-blue-500 hover:underline">
+                Login
+              </Link>
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="text-center mt-4">
-        <p className="text-sm text-gray-600">
-          Already have an account?{" "}
-          <Link href="/login" className="text-blue-500 hover:underline">
-            Login
-          </Link>
-        </p>
-      </div>
+
+
     </div>
   );
 };

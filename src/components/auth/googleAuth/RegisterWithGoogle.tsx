@@ -43,7 +43,7 @@ const RegisterWithGoogle = ({ selectedRole }: { selectedRole: UserRole }) => {
   };
 
   return (
-    <Button disabled={!selectedRole} onClick={handleGoogleLogin}>
+    <Button className="w-full bg-slate-50 text-black" disabled={!selectedRole} onClick={handleGoogleLogin}>
       Google
     </Button>
   );

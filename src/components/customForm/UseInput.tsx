@@ -31,10 +31,10 @@ const UseInput = ({
       control={formContext.control}
       name={name}
       render={({ field }) => (
-        <FormItem className="space-y-3">
+        <FormItem className="mb-0 mt-0">
           <FormLabel
             className={cn(
-              "font-semibold text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              "font-semibold text-sm leading-none  peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
               labelCenter && "flex justify-center"
             )}
           >
