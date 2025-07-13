@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemePorvider";
 import { Toaster } from "sonner";
 import { cookies } from "next/headers";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -36,16 +35,12 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+  
           {!token && <GoogleOneTapLogin />}
           <Toaster richColors position="top-center" />
           <AuthProvider initialToken={token}>{children}</AuthProvider>
-        </ThemeProvider>
+      {/* 
+      for update */}
       </body>
     </html>
   );
