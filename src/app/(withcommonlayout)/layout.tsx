@@ -1,11 +1,11 @@
 import Footer from "@/components/HomePage/Footer/Footer";
 import Navbar from "@/components/HomePage/Navbar/Navbar";
-import { navItems } from "../(seller)/seller/layout";
+import { NavItems } from "@/constant/navItems";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Navbar navItems={navItems} />
+      <Navbar navItems={NavItems.public} />
       {children}
       <Footer />
     </>

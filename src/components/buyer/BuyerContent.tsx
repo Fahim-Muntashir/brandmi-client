@@ -9,7 +9,7 @@ const BuyerContent = () => {
       {/* Header */}
 
       {/* Dashboard Content */}
-      <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+      <main className="flex-1 overflow-x-hidden overflow-y-auto">
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 space-y-6">
           {/* Dashboard Overview */}
           <BuyerOverview />

@@ -3,6 +3,7 @@ import Member from "./Member";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import member1 from "@/assests/member1.avif";
+import Heading from "../heading/Heading";
 
 // replace with react data array:
 const memberData = Array.from({ length: 8 }, (_, index) => ({
@@ -40,6 +41,10 @@ export default function Members() {
   };
   return (
     <div className="container px-4 mx-auto mt-12">
+          <section className="container mx-auto px-4 ">
+            <Heading heading="Best Sellers" className="mt-16 font-semibold text-left b border-l-4 ps-4" />
+
+          </section>
       <Carousel
         infinite
         ssr

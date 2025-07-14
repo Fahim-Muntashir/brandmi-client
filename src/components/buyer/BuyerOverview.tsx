@@ -36,10 +36,12 @@ const BuyerOverview = () => {
           </Card>
         ))}
       </div>
+      <br />
       <Card>
         <CardHeader>
           <CardTitle>Spending Limit</CardTitle>
         </CardHeader>
+        <br />
         <CardContent>
           <Progress value={65} className="w-full" />
           <p className="text-sm text-gray-500 mt-2">

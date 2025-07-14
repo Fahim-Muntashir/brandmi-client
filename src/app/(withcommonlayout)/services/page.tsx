@@ -51,7 +51,7 @@ function ServicesPages() {
   const services = [
     {
       id: 1,
-      image: "/placeholder.svg?height=225&width=400",
+      image: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       seller: "A. Jamett",
       level: "Level 2",
       isChoice: true,
@@ -63,7 +63,7 @@ function ServicesPages() {
     },
     {
       id: 2,
-      image: "/placeholder.svg?height=225&width=400",
+      image: "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?cs=srgb&dl=pexels-thibault-trillet-44912-167636.jpg&fm=jpg",
       seller: "Designrar",
       level: "Level 2",
       description:
@@ -74,7 +74,7 @@ function ServicesPages() {
     },
     {
       id: 3,
-      image: "/placeholder.svg?height=225&width=400",
+      image: "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?cs=srgb&dl=pexels-thibault-trillet-44912-167636.jpg&fm=jpg",
       seller: "Samreengraphics",
       level: "Level 2",
       description:
@@ -85,7 +85,7 @@ function ServicesPages() {
     },
     {
       id: 4,
-      image: "/placeholder.svg?height=225&width=400",
+      image: "https://images.pexels.com/videos/26744649/concert-crowd-gig-jumping-26744649.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       seller: "Noman Nawaz",
       level: "Level 2",
       description:

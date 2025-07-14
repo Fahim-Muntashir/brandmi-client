@@ -1,17 +1,13 @@
 import Footer from "@/components/HomePage/Footer/Footer";
 import Navbar from "@/components/HomePage/Navbar/Navbar";
+import { NavItems } from "@/constant/navItems";
 
-export const navItems = [
-  { href: "/services", label: "Services" },
-  { href: "/talent", label: "Find Talents" },
-  { href: "/why", label: "Why Brandmi" },
-];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <Navbar navItems={navItems} />
+      <Navbar navItems={NavItems.seller} />
       {children}
       <Footer></Footer>
     </>

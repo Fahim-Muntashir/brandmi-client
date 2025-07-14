@@ -55,8 +55,9 @@ const UserMenu = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <Link href={"/login"}>
-          <Button size={"sm"}>Login</Button>
+        <Link href={"/login"} className="flex gap-x-3">
+          <Button size={"sm"} variant="ghost" className="text-md">Sign In</Button>
+          <Button size={"sm"} variant="outline" className="text-md border border-gray-800 p-x-10">Join</Button>
         </Link>
       )}
     </>
