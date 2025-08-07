@@ -1,4 +1,4 @@
-import axiosInstance, { ErrorResponse } from "@/axios/axios";
+import axiosInstance, { ErrorResponse } from "@/helpers/axios/axios";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";

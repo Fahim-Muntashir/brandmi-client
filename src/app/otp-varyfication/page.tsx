@@ -1,5 +1,8 @@
 "use client";
-import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
@@ -52,7 +55,7 @@ const OptVerification = () => {
     const otpCode = otp.join("");
     const otpCodeNumber = Number(otpCode);
     try {
-      const res = await axiosInstance.post("/auth/otp-verification", {
+      const res = await axiosInstance.post("/otp/otp-verification", {
         otpCode: otpCodeNumber,
       });
       const result = res.data as ResponseOptions<null>;

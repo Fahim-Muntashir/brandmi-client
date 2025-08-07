@@ -1,11 +1,11 @@
-
 export type NavItem = {
   href: string;
   label: string;
 };
 
+export type Role = "public" | "buyer" | "seller";
 
-export const NavItems = {
+export const NavItems: Record<Role, NavItem[]> = {
   public: [
     { href: "/", label: "Home" },
     { href: "/why", label: "Why Brandmi" },

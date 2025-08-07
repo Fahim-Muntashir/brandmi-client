@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axios";
 import { useAuth } from "@/providers/AuthProvider";
 import oneTap from "google-one-tap";
 import { useRouter } from "next/navigation";

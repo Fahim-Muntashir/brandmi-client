@@ -11,8 +11,13 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import NavItems from "./NavItems";
 import Logo from "./Logo";
+import { NavItem } from "@/constant/navItems";
 
-const MobileNavbar = () => {
+interface NavbarProps {
+  navItems: NavItem[];
+}
+
+const MobileNavbar = ({ navItems }: NavbarProps) => {
   const [onOpen, setOnOpen] = useState(false);
   const handleMobileMenu = () => {
     setOnOpen(true);
@@ -39,7 +44,7 @@ const MobileNavbar = () => {
             <Logo />
           </SheetTitle>
         </SheetHeader>
-        <NavItems />
+        <NavItems navItems={navItems} />
       </SheetContent>
     </Sheet>
   );

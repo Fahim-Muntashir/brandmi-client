@@ -7,11 +7,14 @@ import { Button } from "@/components/ui/button";
 import UseInput from "@/components/customForm/UseInput";
 import { UseForm } from "@/components/customForm/UseForm";
 import Link from "next/link";
-import { registerAction } from "@/actions/register.action";
+import { registerAction } from "@/services/actions/register.action";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import RegisterWithGoogle from "@/components/auth/googleAuth/RegisterWithGoogle";
-import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axios";
 import RoleSelector, {
   RoleSelectorProps,
   UserRole,
@@ -70,21 +73,25 @@ const RegisterForm = () => {
   };
 
   return (
-
     <div className="flex flex-1 justify-center items-center h-screen">
-
-
       <div className="flex border gap-3">
         <div className="md:w-2/4 hidden md:block">
-          <Image src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={630} height={100} />
+          <Image
+            src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+            width={630}
+            height={100}
+          />
         </div>
-
 
         <div className=" bg-white w-full max-w-md mx-auto p-10">
           <h2 className="text-2xl font-bold mb-2 text-center mt-5">
             Create Your Account
           </h2>
-          <RoleSelector selectedRole={selectedRole} onRoleSelect={onRoleSelect} />
+          <RoleSelector
+            selectedRole={selectedRole}
+            onRoleSelect={onRoleSelect}
+          />
           <UseForm
             onSubmit={handleSubmit}
             schema={registerSchema}
@@ -114,16 +121,13 @@ const RegisterForm = () => {
             >
               Register
             </Button>
-
-          </UseForm>             <br />
+          </UseForm>{" "}
+          <br />
           <div className="flex justify-between items-center">
-            <div className="border-t w-2/5">
-            </div>
+            <div className="border-t w-2/5"></div>
             <p>or</p>
-            <div className="border-t w-2/5">
-            </div>
+            <div className="border-t w-2/5"></div>
           </div>
-
           <div className="flex justify-center pt-2">
             <RegisterWithGoogle selectedRole={selectedRole} />
           </div>
@@ -137,8 +141,6 @@ const RegisterForm = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

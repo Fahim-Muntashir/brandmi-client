@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
-import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axios";
 import { registerSchema } from "@/schemas/register.schema";
 import { z } from "zod";
 

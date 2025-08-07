@@ -6,7 +6,10 @@ import UseInput from "@/components/customForm/UseInput";
 import { UseForm } from "@/components/customForm/UseForm";
 import Link from "next/link";
 import { toast } from "sonner";
-import axiosInstance, { ErrorResponse, ResponseOptions } from "@/axios/axios";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axios";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/schemas/login.schema";
 import LoginWithGoogle from "@/components/auth/googleAuth/LoginWithGoogle";
@@ -34,7 +37,12 @@ const LoginForm: React.FC = () => {
     <main className="flex flex-1 justify-center items-center h-screen bg-">
       <div className="flex gap-10 border ">
         <div className="w-2/4 hidden md:block">
-          <Image src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width={500} height={100} />
+          <Image
+            src="https://images.pexels.com/photos/29557509/pexels-photo-29557509/free-photo-of-person-using-pay-station-in-urban-area.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+            width={500}
+            height={100}
+          />
         </div>
         <div className="w-full max-w-md  p-6 bg-white rounded-lg  ">
           <h2 className="text-2xl mt-10 font-bold mb-10 text-center">
@@ -54,27 +62,26 @@ const LoginForm: React.FC = () => {
 
             <Button type="submit" className="w-full ">
               Login
-            </Button><div className="flex justify-between items-center">
-              <div className="border-t w-2/5">
-              </div>
+            </Button>
+            <div className="flex justify-between items-center">
+              <div className="border-t w-2/5"></div>
               <p>or</p>
-              <div className="border-t w-2/5">
-              </div>
+              <div className="border-t w-2/5"></div>
             </div>
           </UseForm>
           <div className="text-center mt-4">
             <LoginWithGoogle />
 
-
             <p className="text-sm mt-4 text-gray-600">
               Don&apos;t have an account ?
-              <Link href="/register" className="text-blue-500 hover:underline">  Register
+              <Link href="/register" className="text-blue-500 hover:underline">
+                {" "}
+                Register
               </Link>
             </p>
           </div>
         </div>
       </div>
-
     </main>
   );
 };

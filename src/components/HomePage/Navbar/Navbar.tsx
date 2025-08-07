@@ -1,15 +1,15 @@
-
-import { SearchBox } from "@/components/Search/SearchBox";
+// Navbar.tsx
 import Logo from "./Logo";
 import MobileNavbar from "./MobileNavbar";
 import NavItems from "./NavItems";
-// import ToggleMode from "./ToogleMode";
 import UserMenu from "./UserMenu";
-import { NavItem } from "@/constant/navItems";
+import { NavItem, Role } from "@/constant/navItems";
 
+interface NavbarProps {
+  navItems: NavItem[];
+}
 
-export default function Navbar({ navItems}:{navItems:NavItem}) {
-  console.log(navItems);
+export default function Navbar({ navItems }: NavbarProps) {
   return (
     <main className="sticky top-0 z-50">
       <header className="w-full border-b bg-white dark:bg-black">
@@ -21,12 +21,11 @@ export default function Navbar({ navItems}:{navItems:NavItem}) {
               <NavItems navItems={navItems} />
             </div>
           </div>
-          {/* Right side: UserMenu and ToggleMode */}
+          {/* Right side: UserMenu and MobileNavbar */}
           <div className="flex items-center gap-3">
             <UserMenu />
-            <MobileNavbar />
+            <MobileNavbar navItems={navItems} />
           </div>
-          {/* Mobile Navbar */}
         </div>
       </header>
     </main>
