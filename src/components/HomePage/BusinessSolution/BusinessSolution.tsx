@@ -1,44 +1,47 @@
-import { Check } from "lucide-react";
+import { Check, TrendingUp, Users, DollarSign } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const businessData = [
   {
-    title: "Scaling Made Easy",
-    description:
-      "Find professional talent to boost your conversion, sales, and traffic.",
+    title: "Scale Your Business",
+    description: "Find professional talent to boost your growth.",
   },
   {
-    title: "Outsource & Save (up to 87%!)",
-    description:
-      "Dramatically reduce your expenses with fixed-price freelance services for every budget.",
+    title: "Save Up to 87%",
+    description: "Reduce expenses with fixed-price services.",
   },
   {
-    title: "Focus on Priorities",
-    description:
-      "Spend up to 75% less time on business tasks and focus on what really matters for growth.",
-  },
-  {
-    title: "Flexible Solutions",
-    description:
-      "Customize your business strategy with adaptable solutions tailored to your unique needs.",
+    title: "Focus on Growth",
+    description: "Spend less time on tasks, more on priorities.",
   },
 ];
 
 export default function BusinessSolution() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 ">
-      <div className="container px-4  mx-auto">
-        <div className="grid gap-6 lg:grid-cols-2 justify-center items-center">
+    <section className="w-full py-16">
+      <div className="container px-4 mx-auto">
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          {/* Content Section */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Intelligent business solutions for entrepreneurs
-            </h2>
-            <div className="space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                Smart business solutions for{" "}
+                <span className="text-primary">entrepreneurs</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Transform your business with professional services designed for
+                growth.
+              </p>
+            </div>
+
+            <div className="space-y-4">
               {businessData.map((item, idx) => (
                 <div key={idx} className="flex items-start space-x-3">
-                  <Check className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-gray-500 dark:text-gray-400">
+                    <h3 className="font-semibold mb-1">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm">
                       {item.description}
                     </p>
                   </div>
@@ -46,15 +49,27 @@ export default function BusinessSolution() {
               ))}
             </div>
           </div>
-          <div className="flex items-center justify-end">
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/rVNcbxvgHEM"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
+
+          {/* Stats Section */}
+          <div className="space-y-6">
+            <Card className="text-center p-8">
+              <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
+              <div className="text-4xl font-bold text-primary mb-2">500K+</div>
+              <p className="text-muted-foreground">Businesses Served</p>
+            </Card>
+
+            <div className="grid grid-cols-2 gap-4">
+              <Card className="text-center p-6">
+                <Users className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                <div className="text-2xl font-bold">98%</div>
+                <p className="text-sm text-muted-foreground">Satisfaction</p>
+              </Card>
+
+              <Card className="text-center p-6">
+                <DollarSign className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                <div className="text-2xl font-bold">87%</div>
+                <p className="text-sm text-muted-foreground">Cost Savings</p>
+              </Card>
             </div>
           </div>
         </div>
