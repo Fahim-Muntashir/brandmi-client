@@ -11,15 +11,16 @@ import { registerAction } from "@/services/actions/register.action";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import RegisterWithGoogle from "@/components/auth/googleAuth/RegisterWithGoogle";
-import axiosInstance, {
-  ErrorResponse,
-  ResponseOptions,
-} from "@/helpers/axios/axios";
+
 import RoleSelector, {
   RoleSelectorProps,
   UserRole,
 } from "@/components/auth/RoleSelector";
 import Image from "next/image";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axiosInstance";
 
 // Zod Schema for Validation
 const registerSchema = z

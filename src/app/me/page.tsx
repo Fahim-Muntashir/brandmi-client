@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axiosInstance, {
-  ErrorResponse,
-  ResponseOptions,
-} from "@/helpers/axios/axios";
+
 import Navbar from "@/components/HomePage/Navbar/Navbar";
 import { Card } from "@/components/ui/card";
 import { NavItems } from "@/constant/navItems";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axiosInstance";
 import { cookies } from "next/headers";
 
 const Profile: React.FC = async () => {

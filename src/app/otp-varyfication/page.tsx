@@ -1,10 +1,11 @@
 "use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import axiosInstance, {
   ErrorResponse,
   ResponseOptions,
-} from "@/helpers/axios/axios";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+} from "@/helpers/axios/axiosInstance";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";

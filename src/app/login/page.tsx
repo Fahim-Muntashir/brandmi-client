@@ -6,15 +6,16 @@ import UseInput from "@/components/customForm/UseInput";
 import { UseForm } from "@/components/customForm/UseForm";
 import Link from "next/link";
 import { toast } from "sonner";
-import axiosInstance, {
-  ErrorResponse,
-  ResponseOptions,
-} from "@/helpers/axios/axios";
+
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/schemas/login.schema";
 import LoginWithGoogle from "@/components/auth/googleAuth/LoginWithGoogle";
 import { loginDefaultValues } from "@/defaultValues/loginDefaultValues";
 import Image from "next/image";
+import axiosInstance, {
+  ErrorResponse,
+  ResponseOptions,
+} from "@/helpers/axios/axiosInstance";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();

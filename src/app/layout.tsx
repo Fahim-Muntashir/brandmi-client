@@ -5,8 +5,7 @@ import { Toaster } from "sonner";
 import { cookies } from "next/headers";
 import { AuthProvider } from "@/providers/AuthProvider";
 import GoogleOneTapLogin from "@/auth/GoogleOneTap";
-import { Provider } from "react-redux";
-import store from "@/redux/store";
+import Providers from "@/lib/Providers/Providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,13 +36,13 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider store={store}>
+        <Providers>
           {!token && <GoogleOneTapLogin />}
           <Toaster richColors position="top-center" />
           <AuthProvider initialToken={token}>{children}</AuthProvider>
           {/* 
       for update */}
-        </Provider>
+        </Providers>
       </body>
     </html>
   );
