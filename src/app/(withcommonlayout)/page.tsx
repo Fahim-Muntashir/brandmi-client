@@ -3,18 +3,19 @@ import Banner from "@/components/HomePage/Banner/Banner";
 import PopularServices from "@/components/HomePage/PopularServices/TrendingOffers";
 import BusinessSolution from "@/components/HomePage/BusinessSolution/BusinessSolution";
 import Members from "@/components/members/Members";
+import Cta from "./_components/Cta";
 
 const HomePage = () => {
-    return (
-        <>
-            <Banner />
-            <Category />
-            <PopularServices />
-            <BusinessSolution />
-            <Members />
-        </>
-    );
+  return (
+    <>
+      <Banner />
+      <Category />
+      <PopularServices />
+      <BusinessSolution />
+      <Members />
+      <Cta />
+    </>
+  );
 };
 
 export default HomePage;
-

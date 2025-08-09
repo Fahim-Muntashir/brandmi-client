@@ -47,10 +47,10 @@ const UserMenu = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={"/me"}>
+            <Link href={`/${role}/`}>
               <DropdownMenuItem>Profile</DropdownMenuItem>
             </Link>
-            <Link href={`dashboard/${role}`}>
+            <Link href={`/${role}`}>
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
             </Link>
             <Logout />

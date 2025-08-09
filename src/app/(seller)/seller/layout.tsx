@@ -6,7 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const userRole: Role = "public";
   return (
     <>
-      <Navbar navItems={AllNavItems.public} />
+      <Navbar navItems={AllNavItems.seller} />
 
       {children}
       <Footer></Footer>

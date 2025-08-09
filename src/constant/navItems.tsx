@@ -3,7 +3,7 @@ export type NavItem = {
   label: string;
 };
 
-export type Role = "public" | "buyer" | "seller";
+export type Role = 'public' | 'buyer' | 'seller';
 
 export const NavItems: Record<Role, NavItem[]> = {
   public: [
