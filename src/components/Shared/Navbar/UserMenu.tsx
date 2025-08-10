@@ -11,15 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
-import profileImage from "@/assests/profile.jpg";
+import avatar from "@/assests/profile.jpg";
 import { useAuth } from "@/providers/AuthProvider";
 import Logout from "./Logout";
 
 const UserMenu = () => {
   const { isAuth, user } = useAuth();
-  const { email, role, userName, image } = user || {};
-
-  console.log(user);
+  const { email, role, userName, profileImage } = user || {};
 
   return (
     <>
@@ -28,10 +26,10 @@ const UserMenu = () => {
           <DropdownMenuTrigger asChild>
             <div className="h-10 w-10 relative cursor-pointer transition-transform duration-200 hover:scale-105 rounded-full shadow-lg">
               <Image
-                src={image ? image : profileImage}
+                src={profileImage ? profileImage : avatar}
                 fill
                 alt="user name"
-                className="rounded-full "
+                className="rounded-full object-cover"
               />
               <span className="sr-only">Open user menu</span>
             </div>
@@ -47,10 +45,10 @@ const UserMenu = () => {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={`/${role}/`}>
+            <Link href={`/${role}_dashboard/profile`}>
               <DropdownMenuItem>Profile</DropdownMenuItem>
             </Link>
-            <Link href={`/${role}`}>
+            <Link href={`/${role}_dashboard`}>
               <DropdownMenuItem>Dashboard</DropdownMenuItem>
             </Link>
             <Logout />

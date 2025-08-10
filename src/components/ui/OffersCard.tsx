@@ -12,7 +12,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import profile from "@/../src/assests/offers/profile1.png";
-import { OfferType } from "../HomePage/PopularServices/TrendingOffers";
+import { OfferType } from "../../app/(withcommonlayout)/_components/PopularServices/TrendingOffers";
 
 export default function FreelanceServiceCard({
   service,

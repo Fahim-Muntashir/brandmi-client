@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import Navbar from "@/components/HomePage/Navbar/Navbar";
+import Navbar from "@/components/Shared/Navbar/Navbar";
 import { Card } from "@/components/ui/card";
 import { NavItems } from "@/constant/navItems";
 import axiosInstance, {

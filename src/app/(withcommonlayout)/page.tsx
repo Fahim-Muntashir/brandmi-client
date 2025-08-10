@@ -1,9 +1,9 @@
-import Category from "@/components/HomePage/category/Category";
-import Banner from "@/components/HomePage/Banner/Banner";
-import PopularServices from "@/components/HomePage/PopularServices/TrendingOffers";
-import BusinessSolution from "@/components/HomePage/BusinessSolution/BusinessSolution";
+import Category from "@/app/(withcommonlayout)/_components/category/Category";
 import Members from "@/components/members/Members";
 import Cta from "./_components/Cta";
+import Banner from "./_components/Banner";
+import BusinessSolution from "./_components/BusinessSolution";
+import PopularServices from "./_components/TrendingOffers";
 
 const HomePage = () => {
   return (

@@ -1,5 +1,6 @@
-import Footer from "@/components/HomePage/Footer/Footer";
-import Navbar from "@/components/HomePage/Navbar/Navbar";
+import Footer from "@/components/Shared/Footer/Footer";
+import Navbar from "@/components/Shared/Navbar/Navbar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { NavItems as AllNavItems, Role } from "@/constant/navItems";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -7,8 +8,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar navItems={AllNavItems.seller} />
+      <SidebarProvider>{children}</SidebarProvider>
 
-      {children}
       <Footer></Footer>
     </>
   );

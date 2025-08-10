@@ -1,5 +1,5 @@
 import React from "react";
-import { Star, Clock, MapPin, Calendar } from "lucide-react";
+import { Star, Clock, MapPin, Calendar, Edit } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +22,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 const SellerProfileSidebar = () => {
   return (
     <div className="space-y-6">
@@ -59,78 +60,15 @@ const SellerProfileSidebar = () => {
           Get a Quote
         </Button>
       </div>
-      <div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button
-              className="flex-1 bg-slate-200 w-full  font-bold"
-              variant="outline"
-            >
-              Edit Profile
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[565px]">
-            <DialogHeader>
-              <DialogTitle>Edit profile</DialogTitle>
-              <DialogDescription>
-                Make changes to your profile here. Click save when you re done.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="name" className="text-right">
-                  Name
-                </Label>
-                <Input id="name" value="Pedro Duarte" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Username
-                </Label>
-                <Input id="username" value="@peduarte" className="col-span-3" />
-              </div>
-
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Description
-                </Label>
-                <Input id="username" className="col-span-3" />
-              </div>
-
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Profile Headline
-                </Label>
-                <Input id="username" className="col-span-3" />
-              </div>
-
-              {/* country  */}
-
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="country" className="text-right">
-                  Country
-                </Label>
-                <div className="col-span-3">
-                  <Select>
-                    <SelectTrigger id="country">
-                      <SelectValue placeholder="Select a country" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="af">Afghanistan</SelectItem>
-                      <SelectItem value="gy">Guyana</SelectItem>
-                      <SelectItem value="ht">Haiti</SelectItem>
-                      <SelectItem value="hn">Honduras</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
-
-            <DialogFooter>
-              <Button type="submit">Save changes</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+      <div className="w-full">
+        <Button variant="outline" className="w-full">
+          <Link
+            className="w-full flex justify-center items-center gap-x-2"
+            href={"/seller_dashboard/profile"}
+          >
+            <Edit /> Edit your Profile{" "}
+          </Link>
+        </Button>{" "}
       </div>
       <div className="space-y-4 rounded-lg border p-4">
         <div className="flex items-center gap-2">

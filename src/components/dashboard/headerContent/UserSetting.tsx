@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import profile from "@/assests/profile.jpg";
 import Image from "next/image";
-import Logout from "@/components/HomePage/Navbar/Logout";
+import Logout from "@/components/Shared/Navbar/Logout";
 
 const UserSetting = () => {
   return (
