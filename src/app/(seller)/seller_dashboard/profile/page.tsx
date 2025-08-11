@@ -10,8 +10,12 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useSidebar } from "@/components/ui/sidebar";
 import { EditSidebar } from "./_components/edit-sidebar";
-import { useGetSellerProfileQuery } from "@/redux/api/sellerProfileApi";
+import {
+  useGetSellerProfileQuery,
+  useUpdateSellerProfileMutation,
+} from "@/redux/api/sellerProfileApi";
 import { useAuth } from "@/providers/AuthProvider";
+import { toast } from "sonner";
 export type LanguageLevel =
   | "basic"
   | "conversational"
@@ -27,6 +31,9 @@ export default function SellerProfileEdit() {
     error,
     isLoading,
   } = useGetSellerProfileQuery(user?.userId);
+
+  const [updateSellerProfile, { isLoading: isUpdating, error: updateError }] =
+    useUpdateSellerProfileMutation();
 
   // Profile Header State - initialized empty or null
   const [profileImage, setProfileImage] = useState<string>(""); // empty string means no image yet
@@ -115,32 +122,60 @@ export default function SellerProfileEdit() {
     languageName: string;
     languageLevel: LanguageLevel;
   }) => {
-    await simulateApiCall(data);
-    setProfileImage(data.profileImage);
-    setName(data.name);
-    setCountry(data.country);
-    setLanguageName(data.languageName);
-    setLanguageLevel(data.languageLevel);
-    setOpen(false);
-    setEditingSection("none");
+    try {
+      console.log(user?.userId, data);
+      await updateSellerProfile({
+        sellerId: user?.userId!,
+        updateData: data,
+      }).unwrap();
+
+      setProfileImage(data.profileImage);
+      setName(data.name);
+      setCountry(data.country);
+      setLanguageName(data.languageName);
+      setLanguageLevel(data.languageLevel);
+      setOpen(false);
+      setEditingSection("none");
+    } catch (err) {
+      console.error("Failed to update header", err);
+      // Optionally show user an error message
+    }
   };
 
   const handleSaveAbout = async (data: {
     tagline: string;
     description: string;
   }) => {
-    await simulateApiCall(data);
-    setAboutTagline(data.tagline);
-    setAboutDescription(data.description);
-    setOpen(false);
-    setEditingSection("none");
+    try {
+      await updateSellerProfile({
+        sellerId: user?.userId!,
+        updateData: data,
+      }).unwrap();
+
+      setAboutTagline(data.tagline);
+      setAboutDescription(data.description);
+      setOpen(false);
+      setEditingSection("none");
+      setEditingSection("none");
+      toast.success("Profile header updated successfully!");
+    } catch (err) {
+      console.error("Failed to update about", err);
+    }
   };
 
   const handleSaveSkills = async (data: string[]) => {
-    await simulateApiCall(data);
-    setSkills(data);
-    setOpen(false);
-    setEditingSection("none");
+    try {
+      await updateSellerProfile({
+        sellerId: user?.userId!,
+        updateData: { skills: data },
+      }).unwrap();
+
+      setSkills(data);
+      setOpen(false);
+      setEditingSection("none");
+    } catch (err) {
+      console.error("Failed to update skills", err);
+    }
   };
 
   const handleAddPortfolioItem = async (data: {
@@ -148,11 +183,21 @@ export default function SellerProfileEdit() {
     description: string;
     imageUrl: string;
   }) => {
-    await simulateApiCall(data);
-    const newItem = { ...data, id: String(portfolioItems.length + 1) }; // Simple ID generation
-    setPortfolioItems([...portfolioItems, newItem]);
-    setOpen(false);
-    setEditingSection("none");
+    try {
+      const newItem = { ...data, id: String(portfolioItems.length + 1) };
+      // Update backend with new portfolio list including new item
+      const updatedPortfolio = [...portfolioItems, newItem];
+      await updateSellerProfile({
+        sellerId: user?.userId!,
+        data: { portfolio: updatedPortfolio },
+      }).unwrap();
+
+      setPortfolioItems(updatedPortfolio);
+      setOpen(false);
+      setEditingSection("none");
+    } catch (err) {
+      console.error("Failed to update portfolio", err);
+    }
   };
 
   const handleCancelEdit = () => {
@@ -177,8 +222,9 @@ export default function SellerProfileEdit() {
           {/* Profile Header */}
           <Card className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="relative">
-              <Avatar className="w-24 h-24 border-2 border-gray-200">
+              <Avatar className="w-24  border-2 border-primary h-24  ">
                 <AvatarImage
+                  className="object-cover "
                   src={profileImage || "/placeholder.svg"}
                   alt="Profile Image"
                 />

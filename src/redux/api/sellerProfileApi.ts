@@ -1,5 +1,6 @@
 import { baseApi } from "./baseApi";
 import { tagTypes } from "../tag-types";
+import axios, { AxiosHeaders } from "axios";
 
 export const sellerProfileApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -17,7 +18,24 @@ export const sellerProfileApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.sellerProfile],
     }),
+    updateSellerProfile: build.mutation({
+      query: ({ sellerId, updateData }) => {
+        console.log("Updating seller profile for ID:", sellerId);
+        console.log("Update data:", updateData);
+
+        return {
+          url: `/sellerprofile/${sellerId}`,
+          method: "PATCH",
+          data: updateData,
+          headers: new AxiosHeaders({
+            "Content-Type": "application/json",
+          }),
+        };
+      },
+      invalidatesTags: [tagTypes.sellerProfile],
+    }),
   }),
 });
 
-export const { useGetSellerProfileQuery } = sellerProfileApi;
+export const { useGetSellerProfileQuery, useUpdateSellerProfileMutation } =
+  sellerProfileApi;
