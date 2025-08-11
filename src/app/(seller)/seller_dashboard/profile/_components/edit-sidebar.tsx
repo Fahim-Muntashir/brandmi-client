@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/sheet";
 import { useSidebar } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
+import { LanguageLevel } from "../page";
 
 // --- Form Interfaces ---
 interface HeaderFormValues {
@@ -34,7 +35,7 @@ interface HeaderFormValues {
   name: string;
   country: string;
   languageName: string;
-  languageLevel: "basic" | "conversational" | "fluent" | "native";
+  languageLevel: LanguageLevel;
 }
 
 interface AboutFormValues {

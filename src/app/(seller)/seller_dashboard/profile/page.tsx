@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Pencil, Plus } from "lucide-react";
 
@@ -12,83 +12,96 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { EditSidebar } from "./_components/edit-sidebar";
 import { useGetSellerProfileQuery } from "@/redux/api/sellerProfileApi";
 import { useAuth } from "@/providers/AuthProvider";
-
+export type LanguageLevel =
+  | "basic"
+  | "conversational"
+  | "fluent"
+  | "native"
+  | "";
 export default function SellerProfileEdit() {
   const { setOpen } = useSidebar();
   const { user } = useAuth();
-  const { data, error, isLoading } = useGetSellerProfileQuery({
-    userId: user?.userId,
-  });
 
-  console.log(data);
+  const {
+    data: profileData,
+    error,
+    isLoading,
+  } = useGetSellerProfileQuery(user?.userId);
 
-  // Profile Header State
-  const [profileImage, setProfileImage] = useState(
-    "/placeholder.svg?height=96&width=96"
-  );
-  const [name, setName] = useState("Fahim Muntashir");
-  const [country, setCountry] = useState("Bangladesh");
-  const [languageName, setLanguageName] = useState("English");
-  const [languageLevel, setLanguageLevel] = useState<
-    "basic" | "conversational" | "fluent" | "native"
-  >("fluent");
+  // Profile Header State - initialized empty or null
+  const [profileImage, setProfileImage] = useState<string>(""); // empty string means no image yet
+  const [name, setName] = useState<string>(user?.userName || "");
+  const [country, setCountry] = useState<string>("");
+  const [languageName, setLanguageName] = useState<string>("");
+  const [languageLevel, setLanguageLevel] = useState<LanguageLevel>("");
 
   // About Section State
-  const [aboutTagline, setAboutTagline] = useState(
-    "Honesty is the best pholocy"
-  );
-  const [aboutDescription, setAboutDescription] = useState(
-    "There are many variations of passages of Lorem Ipsumnet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-  );
+  const [aboutTagline, setAboutTagline] = useState<string>("");
+  const [aboutDescription, setAboutDescription] = useState<string>("");
 
   // Skills Section State
-  const [skills, setSkills] = useState([
-    "Web developer",
-    "Front-end web developer",
-    "Full stack web developer",
-    "React expert",
-    "Next.js developer",
-    "Business startup expert",
-  ]);
+  const [skills, setSkills] = useState<string[]>([]);
 
   // Portfolio Section State
-  const [portfolioItems, setPortfolioItems] = useState([
-    {
-      id: "1",
-      title: "Project Alpha",
-      description: "Description for project alpha.",
-      imageUrl: "/placeholder.svg?height=100&width=150",
-    },
-    {
-      id: "2",
-      title: "Project Beta",
-      description: "Description for project beta.",
-      imageUrl: "/placeholder.svg?height=100&width=150",
-    },
-    {
-      id: "3",
-      title: "Project Gamma",
-      description: "Description for project gamma.",
-      imageUrl: "/placeholder.svg?height=100&width=150",
-    },
-    {
-      id: "4",
-      title: "Project Delta",
-      description: "Description for project delta.",
-      imageUrl: "/placeholder.svg?height=100&width=150",
-    },
-    {
-      id: "5",
-      title: "Project Epsilon",
-      description: "Description for project epsilon.",
-      imageUrl: "/placeholder.svg?height=100&width=150",
-    },
-  ]);
+  const [portfolioItems, setPortfolioItems] = useState<
+    { id: string; title: string; description: string; imageUrl: string }[]
+  >([]);
 
-  // State to control which section is being edited in the sidebar
+  // Editing Section State
   const [editingSection, setEditingSection] = useState<
     "none" | "header" | "about" | "skills" | "portfolio"
   >("none");
+
+  // Update states when profileData arrives
+  useEffect(() => {
+    if (profileData && profileData) {
+      const seller = profileData;
+      console.log(seller);
+      // Header
+      setProfileImage(user?.profileImage || "");
+      setName(seller.name || user?.userName || "");
+      setCountry(seller.country || "");
+      if (seller.languages && seller.languages.length > 0) {
+        setLanguageName(seller.languages[0].name || "");
+        setLanguageLevel(seller.languages[0].level || "");
+      } else {
+        setLanguageName("");
+        setLanguageLevel("");
+      }
+
+      // About
+      setAboutTagline(seller.tagline || seller.title);
+      setAboutDescription(seller.description || "");
+
+      // Skills
+      setSkills(
+        Array.isArray(seller.skills) ? seller.skills.filter(Boolean) : []
+      );
+
+      // Portfolio (if coming from backend, else keep empty)
+      setPortfolioItems(
+        Array.isArray(seller.portfolio)
+          ? seller.portfolio.map((item: any, index: number) => ({
+              id: item._id || String(index),
+              title: item.title || "",
+              description: item.description || "",
+              imageUrl: item.imageUrl || "",
+            }))
+          : []
+      );
+    } else {
+      // Clear fields if no data
+      setProfileImage("");
+      setName(user?.userName || "");
+      setCountry("");
+      setLanguageName("");
+      setLanguageLevel("");
+      setAboutTagline("");
+      setAboutDescription("");
+      setSkills([]);
+      setPortfolioItems([]);
+    }
+  }, [profileData, user?.userName]);
 
   const simulateApiCall = async (data: any) => {
     console.log("Simulating API call with data:", data);
@@ -100,7 +113,7 @@ export default function SellerProfileEdit() {
     name: string;
     country: string;
     languageName: string;
-    languageLevel: "basic" | "conversational" | "fluent" | "native";
+    languageLevel: LanguageLevel;
   }) => {
     await simulateApiCall(data);
     setProfileImage(data.profileImage);
@@ -153,6 +166,7 @@ export default function SellerProfileEdit() {
     setEditingSection(section);
     setOpen(true);
   };
+
   if (isLoading) return <p>Loading seller profile...</p>;
   if (error) return <p>Error loading profile.</p>;
   return (
