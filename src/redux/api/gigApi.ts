@@ -17,11 +17,11 @@ export const gigApi = baseApi.injectEndpoints({
 
     // GET all gigs for a seller
     getSellerGigs: build.query({
-      query: (sellerId: string) => ({
-        url: `/gigs?sellerId=${sellerId}`,
+      query: (sellerId) => ({
+        url: `/gigs/sellergigs/${sellerId}`,
         method: "GET",
       }),
-      transformResponse: (response: any) => response.data?.gigs || [],
+      transformResponse: (response: any) => response.data || [],
       providesTags: [tagTypes.gigs],
     }),
 

@@ -1,9 +1,23 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import ProjectManager from "./_components/_manage-gig";
+import { useGetSellerGigsQuery } from "@/redux/api/gigApi";
+import { useAuth } from "@/providers/AuthProvider";
 
 const page = () => {
+  const { user } = useAuth();
+  const {
+    data: gigs,
+    isLoading,
+    isError,
+  } = useGetSellerGigsQuery(user?.userId);
+
+  if (isLoading) {
+    return <p>Loading</p>;
+  }
+
   return (
     <div className="container">
       <header className="flex justify-between mt-10">
@@ -20,7 +34,7 @@ const page = () => {
         </Button>
       </header>
 
-      <ProjectManager></ProjectManager>
+      <ProjectManager allgigs={gigs}></ProjectManager>
     </div>
   );
 };

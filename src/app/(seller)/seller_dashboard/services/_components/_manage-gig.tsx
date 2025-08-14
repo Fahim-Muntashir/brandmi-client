@@ -68,10 +68,10 @@ const mockgigs: Gig[] = [
   },
 ];
 
-export default function GigManager() {
-  const [gigs, setgigs] = useState<Gig[]>(mockgigs);
+export default function GigManager({ allgigs }: { allgigs: Gig[] }) {
+  const [gigs, setgigs] = useState<Gig[]>(allgigs);
   const [activeTab, setActiveTab] = useState<gigstatus>("active");
-
+  console.log(allgigs);
   // Optimized handler functions using useCallback
   const handleTabChange = useCallback((tab: gigstatus) => {
     setActiveTab(tab);
@@ -181,7 +181,7 @@ export default function GigManager() {
         ) : (
           filteredgigs.map((gig) => (
             <GigItem
-              key={gig.id}
+              key={gig?._id}
               gig={gig}
               onEdit={handleEdit}
               onDelete={handleDelete}
@@ -243,7 +243,7 @@ const GigItem = React.memo(
           <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
             <div className="flex-shrink-0">
               <img
-                src={gig.thumbnail || "/placeholder.svg"}
+                src={gig.images[0] || "/placeholder.svg"}
                 alt="Gig thumbnail"
                 className="w-12 h-9 sm:w-16 sm:h-12 object-cover rounded-md border border-gray-200"
               />
@@ -261,7 +261,11 @@ const GigItem = React.memo(
                   {gig.status.charAt(0).toUpperCase() + gig.status.slice(1)}
                 </Badge>
                 <span className="text-xs text-gray-500 hidden sm:inline">
-                  {gig.createdAt.toLocaleDateString()}
+                  <p>
+                    {gig.createdAt
+                      ? new Date(gig.createdAt).toLocaleDateString()
+                      : "No date available"}
+                  </p>
                 </span>
               </div>
             </div>
