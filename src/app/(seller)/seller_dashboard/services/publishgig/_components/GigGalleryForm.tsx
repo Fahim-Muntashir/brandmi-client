@@ -9,6 +9,19 @@ import { useAuth } from "@/providers/AuthProvider";
 import { useCreateGigMutation } from "@/redux/api/gigApi";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+interface Gallery {
+  images: File[];
+}
+
+interface FormData {
+  gallery?: Gallery;
+}
+
+const updatedFormData: FormData = {
+  gallery: {
+    images: [], // <-- now only accepts File objects
+  },
+};
 
 const GigGalleryForm = () => {
   const { user } = useAuth();
@@ -51,10 +64,11 @@ const GigGalleryForm = () => {
         }
       );
 
-      // Append gallery images (multiple files)
       if (updatedFormData.gallery?.images?.length) {
-        updatedFormData.gallery.images.forEach((file: File) => {
-          formData.append("images", file);
+        updatedFormData.gallery.images.forEach((item: any) => {
+          if (item instanceof File) {
+            formData.append("images", item);
+          }
         });
       }
 

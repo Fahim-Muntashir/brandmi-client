@@ -20,17 +20,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 
-type ProjectStatus = "active" | "pending" | "paused";
+type gigstatus = "active" | "pending" | "paused";
 
-interface Project {
+interface Gig {
   id: string;
   title: string;
   thumbnail: string;
-  status: ProjectStatus;
+  status: gigstatus;
   createdAt: Date;
 }
 
-const mockProjects: Project[] = [
+const mockgigs: Gig[] = [
   {
     id: "1",
     title: "Create Your Modern Thumbnail using Our Photoshop Team",
@@ -68,59 +68,59 @@ const mockProjects: Project[] = [
   },
 ];
 
-export default function ProjectManager() {
-  const [projects, setProjects] = useState<Project[]>(mockProjects);
-  const [activeTab, setActiveTab] = useState<ProjectStatus>("active");
+export default function GigManager() {
+  const [gigs, setgigs] = useState<Gig[]>(mockgigs);
+  const [activeTab, setActiveTab] = useState<gigstatus>("active");
 
   // Optimized handler functions using useCallback
-  const handleTabChange = useCallback((tab: ProjectStatus) => {
+  const handleTabChange = useCallback((tab: gigstatus) => {
     setActiveTab(tab);
   }, []);
 
-  const handleEdit = useCallback((projectId: string) => {
-    console.log("Editing project:", projectId);
+  const handleEdit = useCallback((gigId: string) => {
+    console.log("Editing gig:", gigId);
     // Implement edit logic here
   }, []);
 
-  const handleDelete = useCallback((projectId: string) => {
-    setProjects((prev) => prev.filter((project) => project.id !== projectId));
+  const handleDelete = useCallback((gigId: string) => {
+    setgigs((prev) => prev.filter((gig) => gig.id !== gigId));
   }, []);
 
   const handleStatusChange = useCallback(
-    (projectId: string, newStatus: ProjectStatus) => {
-      setProjects((prev) =>
-        prev.map((project) =>
-          project.id === projectId ? { ...project, status: newStatus } : project
+    (gigId: string, newStatus: gigstatus) => {
+      setgigs((prev) =>
+        prev.map((gig) =>
+          gig.id === gigId ? { ...gig, status: newStatus } : gig
         )
       );
     },
     []
   );
 
-  const handlePublicView = useCallback((projectId: string) => {
-    console.log("Opening public view for project:", projectId);
+  const handlePublicView = useCallback((gigId: string) => {
+    console.log("Opening public view for gig:", gigId);
     // Implement public view logic here - could open in new tab, navigate to public URL, etc.
-    window.open(`/public/project/${projectId}`, "_blank");
+    window.open(`/public/gig/${gigId}`, "_blank");
   }, []);
 
-  // Memoized filtered projects for performance
-  const filteredProjects = useMemo(
-    () => projects.filter((project) => project.status === activeTab),
-    [projects, activeTab]
+  // Memoized filtered gigs for performance
+  const filteredgigs = useMemo(
+    () => gigs.filter((gig) => gig.status === activeTab),
+    [gigs, activeTab]
   );
 
-  // Memoized project counts
-  const projectCounts = useMemo(() => {
-    return projects.reduce((acc, project) => {
-      acc[project.status] = (acc[project.status] || 0) + 1;
+  // Memoized gig counts
+  const gigCounts = useMemo(() => {
+    return gigs.reduce((acc, gig) => {
+      acc[gig.status] = (acc[gig.status] || 0) + 1;
       return acc;
-    }, {} as Record<ProjectStatus, number>);
-  }, [projects]);
+    }, {} as Record<gigstatus, number>);
+  }, [gigs]);
 
-  const tabs: { key: ProjectStatus; label: string; count: number }[] = [
-    { key: "active", label: "Active", count: projectCounts.active || 0 },
-    { key: "pending", label: "Pending", count: projectCounts.pending || 0 },
-    { key: "paused", label: "Paused", count: projectCounts.paused || 0 },
+  const tabs: { key: gigstatus; label: string; count: number }[] = [
+    { key: "active", label: "Active", count: gigCounts.active || 0 },
+    { key: "pending", label: "Pending", count: gigCounts.pending || 0 },
+    { key: "paused", label: "Paused", count: gigCounts.paused || 0 },
   ];
 
   return (
@@ -154,7 +154,7 @@ export default function ProjectManager() {
       </div>
 
       <div className="space-y-2 sm:space-y-3">
-        {filteredProjects.length === 0 ? (
+        {filteredgigs.length === 0 ? (
           <div className="text-center py-8 sm:py-12">
             <div className="text-gray-400 mb-2">
               <svg
@@ -172,17 +172,17 @@ export default function ProjectManager() {
               </svg>
             </div>
             <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1">
-              No {activeTab} projects
+              No {activeTab} gigs
             </h3>
             <p className="text-sm sm:text-base text-gray-500">
-              Get started by creating a new project
+              Get started by creating a new gig
             </p>
           </div>
         ) : (
-          filteredProjects.map((project) => (
-            <ProjectItem
-              key={project.id}
-              project={project}
+          filteredgigs.map((gig) => (
+            <GigItem
+              key={gig.id}
+              gig={gig}
               onEdit={handleEdit}
               onDelete={handleDelete}
               onStatusChange={handleStatusChange}
@@ -195,42 +195,36 @@ export default function ProjectManager() {
   );
 }
 
-// Memoized ProjectItem component for better performance
-const ProjectItem = React.memo(
+// Memoized GigItem component for better performance
+const GigItem = React.memo(
   ({
-    project,
+    gig,
     onEdit,
     onDelete,
     onStatusChange,
     onPublicView,
   }: {
-    project: Project;
+    gig: Gig;
     onEdit: (id: string) => void;
     onDelete: (id: string) => void;
-    onStatusChange: (id: string, status: ProjectStatus) => void;
+    onStatusChange: (id: string, status: gigstatus) => void;
     onPublicView: (id: string) => void;
   }) => {
-    const handleEdit = useCallback(
-      () => onEdit(project.id),
-      [onEdit, project.id]
-    );
+    const handleEdit = useCallback(() => onEdit(gig.id), [onEdit, gig.id]);
     const handleDelete = useCallback(
-      () => onDelete(project.id),
-      [onDelete, project.id]
+      () => onDelete(gig.id),
+      [onDelete, gig.id]
     );
     const handlePublicView = useCallback(
-      () => onPublicView(project.id),
-      [onPublicView, project.id]
+      () => onPublicView(gig.id),
+      [onPublicView, gig.id]
     );
 
     const handlePause = useCallback(() => {
-      onStatusChange(
-        project.id,
-        project.status === "paused" ? "active" : "paused"
-      );
-    }, [onStatusChange, project.id, project.status]);
+      onStatusChange(gig.id, gig.status === "paused" ? "active" : "paused");
+    }, [onStatusChange, gig.id, gig.status]);
 
-    const getStatusColor = (status: ProjectStatus) => {
+    const getStatusColor = (status: gigstatus) => {
       switch (status) {
         case "active":
           return "bg-green-100 text-green-800";
@@ -249,33 +243,32 @@ const ProjectItem = React.memo(
           <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
             <div className="flex-shrink-0">
               <img
-                src={project.thumbnail || "/placeholder.svg"}
-                alt="Project thumbnail"
+                src={gig.thumbnail || "/placeholder.svg"}
+                alt="Gig thumbnail"
                 className="w-12 h-9 sm:w-16 sm:h-12 object-cover rounded-md border border-gray-200"
               />
             </div>
 
             <div className="flex-1 min-w-0">
               <h3 className="text-xs sm:text-sm font-medium text-gray-900 truncate leading-tight">
-                {project.title}
+                {gig.title}
               </h3>
               <div className="flex items-center gap-2 mt-1 flex-wrap">
                 <Badge
                   variant="outline"
-                  className={`text-xs ${getStatusColor(project.status)}`}
+                  className={`text-xs ${getStatusColor(gig.status)}`}
                 >
-                  {project.status.charAt(0).toUpperCase() +
-                    project.status.slice(1)}
+                  {gig.status.charAt(0).toUpperCase() + gig.status.slice(1)}
                 </Badge>
                 <span className="text-xs text-gray-500 hidden sm:inline">
-                  {project.createdAt.toLocaleDateString()}
+                  {gig.createdAt.toLocaleDateString()}
                 </span>
               </div>
             </div>
           </div>
 
           <div className="flex-shrink-0 flex items-center gap-1 sm:gap-2">
-            {project.status === "active" && (
+            {gig.status === "active" && (
               <Button
                 variant="outline"
                 size="sm"
@@ -311,7 +304,7 @@ const ProjectItem = React.memo(
                   onClick={handlePause}
                   className="cursor-pointer"
                 >
-                  {project.status === "paused" ? (
+                  {gig.status === "paused" ? (
                     <>
                       <Play className="mr-2 h-4 w-4" />
                       Resume
@@ -339,4 +332,4 @@ const ProjectItem = React.memo(
   }
 );
 
-ProjectItem.displayName = "ProjectItem";
+GigItem.displayName = "GigItem";
