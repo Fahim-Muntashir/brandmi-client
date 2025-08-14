@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import GigButtons from "../gigButtons";
+import GigButtons from "../../../../../../components/gigs/gigButtons";
 import { UseForm } from "@/components/customForm/UseForm";
 import { gigFormState } from "@/globalStore/gigFormState";
 import UseTextarea from "@/components/customForm/UseTextarea";

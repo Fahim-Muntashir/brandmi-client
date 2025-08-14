@@ -16,6 +16,7 @@ import {
 } from "@/redux/api/sellerProfileApi";
 import { useAuth } from "@/providers/AuthProvider";
 import { toast } from "sonner";
+import Link from "next/link";
 export type LanguageLevel =
   | "basic"
   | "conversational"
@@ -362,9 +363,12 @@ export default function SellerProfileEdit() {
               <h2 className="text-xl font-semibold">Manage Your Service</h2>
             </CardHeader>
             <CardContent className="p-0">
-              <a href="#" className="text-blue-600 hover:underline text-sm">
-                go to service page
-              </a>
+              <Link
+                href="services"
+                className="text-blue-600 hover:underline text-sm bg-inherit"
+              >
+                Go to service page
+              </Link>
             </CardContent>
           </Card>
         </div>

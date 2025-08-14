@@ -1,7 +1,9 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { FormField } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea"; // Assuming Textarea exists
+import { Textarea } from "@/components/ui/textarea";
 import { Plus, X } from "lucide-react";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
@@ -51,72 +53,85 @@ const FAQs = () => {
         };
 
         return (
-          <div className="space-y-5">
-            <div className="flex justify-between items-center">
-              <label className="text-sm font-semibold">FAQs</label>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-medium text-gray-900">FAQs</h3>
               <Button
                 type="button"
-                variant="outline"
+                variant="ghost"
                 size="sm"
                 onClick={addFAQ}
+                className="rounded-xl text-gray-600 hover:bg-gray-50"
               >
-                <Plus className="h-4 w-4 mr-2" /> Add FAQ
+                <Plus className="h-4 w-4 mr-1" />
+                Add
               </Button>
             </div>
 
             {/* New FAQ Input */}
-            <div className="flex flex-col gap-4 items-start mt-4">
+            <div className="space-y-3 p-3 bg-gray-50 rounded-xl">
               <Input
-                placeholder="Enter a question"
+                placeholder="Enter question"
                 value={newFAQ.question}
                 onChange={(e) =>
                   setNewFAQ({ ...newFAQ, question: e.target.value })
                 }
+                className="rounded-xl border-gray-200 text-sm"
               />
               <Textarea
-                placeholder="Enter an answer"
+                placeholder="Enter answer"
                 value={newFAQ.answer}
                 onChange={(e) =>
                   setNewFAQ({ ...newFAQ, answer: e.target.value })
                 }
+                className="rounded-xl border-gray-200 text-sm resize-none"
+                rows={2}
               />
             </div>
 
             {/* List of FAQs */}
-            <div className="space-y-5 mt-5">
+            <div className="space-y-3">
               {values.map((faq, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex-1 space-y-3">
-                    <Input
-                      placeholder="Question"
-                      value={faq.question}
-                      onChange={(e) =>
-                        updateFAQ(index, {
-                          ...faq,
-                          question: e.target.value,
-                        })
-                      }
-                    />
-                    <Textarea
-                      placeholder="Answer"
-                      value={faq.answer}
-                      onChange={(e) =>
-                        updateFAQ(index, {
-                          ...faq,
-                          answer: e.target.value,
-                        })
-                      }
-                    />
+                <div
+                  key={index}
+                  className="p-3 bg-gray-50 rounded-xl space-y-2"
+                >
+                  <div className="flex items-start gap-2">
+                    <div className="flex-1 space-y-2">
+                      <Input
+                        placeholder="Question"
+                        value={faq.question}
+                        onChange={(e) =>
+                          updateFAQ(index, {
+                            ...faq,
+                            question: e.target.value,
+                          })
+                        }
+                        className="rounded-lg border-gray-200 text-sm"
+                      />
+                      <Textarea
+                        placeholder="Answer"
+                        value={faq.answer}
+                        onChange={(e) =>
+                          updateFAQ(index, {
+                            ...faq,
+                            answer: e.target.value,
+                          })
+                        }
+                        className="rounded-lg border-gray-200 text-sm resize-none"
+                        rows={2}
+                      />
+                    </div>
+                    <Button
+                      size="sm"
+                      type="button"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-red-50 hover:text-red-600 rounded-lg"
+                      onClick={() => deleteFAQ(index)}
+                    >
+                      <X className="h-3 w-3" />
+                    </Button>
                   </div>
-                  <Button
-                    size="sm"
-                    type="button"
-                    variant="destructive"
-                    className="h-5 w-4"
-                    onClick={() => deleteFAQ(index)}
-                  >
-                    <X />
-                  </Button>
                 </div>
               ))}
             </div>

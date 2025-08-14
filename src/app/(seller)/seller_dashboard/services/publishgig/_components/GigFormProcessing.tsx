@@ -5,8 +5,8 @@ interface GigFormHeaderProps {
 }
 const GigFormProcessing = ({ progress, currentTab }: GigFormHeaderProps) => {
   return (
-    <div className="mb-8 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-6">Create a New Gig</h1>
+    <div className="mb-8 flex flex-col items-">
+      <h1 className="text-2xl text-left font-bold mb-6">Create a New Gig</h1>
       <Progress value={progress} className="mb-4" />
       <p className="text-sm text-muted-foreground">
         Step {Math.ceil(progress / 25)} of 4 :{" "}

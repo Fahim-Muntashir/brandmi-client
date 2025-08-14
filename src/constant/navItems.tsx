@@ -17,8 +17,8 @@ export const NavItems: Record<Role, NavItem[]> = {
     { href: "/why", label: "Why Brandmi" },
   ],
   seller: [
-    { href: "/services", label: "My Services" },
-    { href: "/talent", label: "Find Talents" },
+    { href: "/seller_dashboard/services", label: "My Services" },
+    { href: "/seller_dashboard/profile", label: "Profile" },
     { href: "/why", label: "Why Brandmi" },
   ],
 };

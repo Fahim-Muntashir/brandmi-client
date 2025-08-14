@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TagInput } from "@/components/customForm/TagInput";
-import GigButtons from "../gigButtons";
+import GigButtons from "../../../../../../components/gigs/gigButtons";
 
 import { UseForm } from "@/components/customForm/UseForm";
 import UseInput from "@/components/customForm/UseInput";

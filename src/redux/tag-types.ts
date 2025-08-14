@@ -1,7 +1,11 @@
+// tag-types.ts
+
 export enum tagTypes {
-  sellerProfile = "sellerProfile", // <-- add this line
+  sellerProfile = "sellerProfile",
+  gigs = "gigs", // <-- added for Gig API
 }
 
 export const tagTypesList = [
-  tagTypes.sellerProfile, // <-- add this line
+  tagTypes.sellerProfile,
+  tagTypes.gigs, // <-- added for Gig API
 ];

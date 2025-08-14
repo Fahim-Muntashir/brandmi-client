@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { UseForm } from "@/components/customForm/UseForm";
-import GigButtons from "../gigButtons";
+import GigButtons from "../../../../../../components/gigs/gigButtons";
 import { gigFormState } from "@/globalStore/gigFormState";
 import { gigPricingSchema } from "@/schemas/gig.schema";
 import PackageFormCard from "./PackageFormCard";
